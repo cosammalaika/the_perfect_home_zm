@@ -1,13 +1,13 @@
 flutter_native_splash:
   color: "#ffffff"
   color_dark: "#4d4d4d"
-  image: asserts\images\Light.png
-  image_dark: asserts\images\dark.png
+  image: assets\images\Light.png
+  image_dark: assets\images\dark.png
 
   android_12:
     color: "#ffffff"
     color_dark: "#4d4d4d"
-    image: asserts\images\Light.png
-    image_dark: asserts\images\dark.png
+    image: assets\images\Light.png
+    image_dark: assets\images\dark.png
 
   web: false
