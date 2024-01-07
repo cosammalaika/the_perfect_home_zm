@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/screens/onboarding_screen.dart';
-import 'package:the_perfect_home_zm/test.dart';
 
 void main() {
   runApp(MyApp());
