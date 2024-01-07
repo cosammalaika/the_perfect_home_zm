@@ -16,18 +16,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         controller: _pageController,
         children: [
           OnboardingPage(
-            title: 'Welcome to Onboarding',
-            description: 'Swipe to discover more',
+            title: 'Welcome to The Perfect Home, swipe to',
+            description: ' discover more',
             imagePath: 'assets/images/on_bording_images/img (1).jpg',
           ),
           OnboardingPage(
-            title: 'Explore Features',
-            description: 'Discover exciting features',
+            title: 'Explore Features discover new places and',
+            description: ' exciting great Homes',
             imagePath: 'assets/images/on_bording_images/img (3).jpg',
           ),
           OnboardingPage(
-            title: 'Get Started',
-            description: 'Ready to begin your journey?',
+            title: 'Get Started and begin your search for a perfect Home',
+            description: ' your journey ?',
             imagePath: 'assets/images/on_bording_images/img (4).jpg',
             isLastPage: true,
             onSkipPressed: () {

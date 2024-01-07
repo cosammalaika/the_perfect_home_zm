@@ -42,8 +42,8 @@ class CustomWidget extends StatelessWidget {
         children: [
           Container(
             margin: EdgeInsets.fromLTRB(0, 0, 175.98 * paddingFactor, 0),
-            width: 79.02 * paddingFactor,
-            height: 74.41 * paddingFactor,
+            width: 80.02 * paddingFactor,
+            height: 80.41 * paddingFactor,
             child: Image.asset(
               'assets/images/Light.png',
               width: 79.02 * paddingFactor,
@@ -99,7 +99,7 @@ class CustomWidget extends StatelessWidget {
       children: [
         Container(
           margin: EdgeInsets.fromLTRB(0, 0, 0, 6 * paddingFactor),
-          constraints: BoxConstraints(maxWidth: 442 * paddingFactor),
+          constraints: BoxConstraints(maxWidth: 742 * paddingFactor),
           child: RichText(
             text: TextSpan(
               style: TextStyle(
@@ -151,12 +151,12 @@ class CustomWidget extends StatelessWidget {
         Container(
           constraints: BoxConstraints(maxWidth: 227 * paddingFactor),
           child: Text(
-            'Lorem ipsum dolor sit amet, consectetur \nadipiscing elit, sed.',
+            '',
             style: TextStyle(
               fontFamily: 'Poppins',
               fontSize: 12 * paddingFactor,
               fontWeight: FontWeight.w400,
-              height: 1.6666666667 * paddingFactor,
+              height: 5 * paddingFactor,
               letterSpacing: 0.36 * paddingFactor,
               color: const Color(0xff292929),
             ),
@@ -181,25 +181,6 @@ class CustomWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            margin: EdgeInsets.fromLTRB(
-                82 * paddingFactor, 0, 81 * paddingFactor, 12 * paddingFactor),
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('assets/images/splash.png'),
-              ),
-            ),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: SizedBox(
-                width: 46.66 * paddingFactor,
-                height: 16 * paddingFactor,
-                child: Image.asset('assets/images/splash.png'),
-              ),
-            ),
-          ),
           SizedBox(height: 16 * paddingFactor), // Add some spacing here
           Container(
             width: double.infinity,
