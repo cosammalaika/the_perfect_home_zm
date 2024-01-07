@@ -31,16 +31,17 @@ class OnboardingPage extends StatelessWidget {
                 width: 40.0,
               ),
               if (!isLastPage)
-                TextButton(
-                  onPressed: onSkipPressed,
-                  child: const Text(
-                    'Skip',
+                const Text(
+                    'skip',
                     style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 16.0,
+                      fontFamily: 'Montserrat',
+                      fontSize: 12 ,
+                      fontWeight: FontWeight.w400,
+                      height: 1.8333333333 ,
+                      letterSpacing: 0.36 ,
+                      color: Color(0xff000000),
                     ),
                   ),
-                ),
             ],
           ),
           const SizedBox(height: 20.0),
