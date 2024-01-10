@@ -43,8 +43,8 @@ class ImageSectionWidget extends StatelessWidget {
                         width: 190 * paddingFactor,
                         height: 54 * paddingFactor,
                         child: Container(
-                          decoration: BoxDecoration(
-                            color: const Color(0xfff55422),
+                          decoration: const BoxDecoration(
+                            color: Color(0xfff55422),
                           ),
                         ),
                       ),

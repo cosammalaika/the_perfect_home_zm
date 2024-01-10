@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/screens/onboarding_screen.dart';
 
+
 void main() {
   runApp(MyApp());
 }
@@ -14,6 +15,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: OnboardingScreen());
+        home: const OnboardingScreen());
   }
 }
