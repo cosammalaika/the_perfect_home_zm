@@ -12,20 +12,21 @@ class OnboardingContents {
 
 List<OnboardingContents> contents = [
   OnboardingContents(
-    title: 'Track Your Work and Get Results',
-    image: 'assets/images/image1.png',
-    desc: 'Remember to keep track of your professional accomplishments.',
+    title: 'Discover Your Perfect Home in Zambia',
+    image: 'assets/images/perfect_home.png',
+    desc:
+        'Explore the ideal living spaces that match your lifestyle and preferences.',
   ),
   OnboardingContents(
-    title: 'Stay Organized with Your Team',
-    image: 'assets/images/image2.png',
+    title: 'Create Harmony in Your Living Space',
+    image: 'assets/images/harmony.png',
     desc:
-        'Understand the contributions our colleagues make to our teams and companies.',
+        'Design and organize your perfect home for a harmonious living experience.',
   ),
   OnboardingContents(
-    title: 'Get Notified When Work Happens',
-    image: 'assets/images/image3.png',
+    title: 'Receive Updates on Dream Properties',
+    image: 'assets/images/notifications.png',
     desc:
-        'Take control of notifications, collaborate live or on your own time.',
+        'Stay informed about the latest listings and updates for your dream home in Zambia.',
   ),
 ];

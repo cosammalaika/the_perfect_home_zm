@@ -72,7 +72,7 @@ class PropertyItem extends StatelessWidget {
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
         const SizedBox(
-          height: 5,
+          height: 2,
         ),
         Row(
           children: [
@@ -82,7 +82,7 @@ class PropertyItem extends StatelessWidget {
               size: 13,
             ),
             const SizedBox(
-              width: 3,
+              width: 2,
             ),
             Text(
               data["location"],
@@ -91,12 +91,12 @@ class PropertyItem extends StatelessWidget {
           ],
         ),
         const SizedBox(
-          height: 5,
+          height: 2,
         ),
         Text(
           data["price"],
           style: const TextStyle(
-            fontSize: 15,
+            fontSize: 13,
             color: AppColor.primary,
             fontWeight: FontWeight.w500,
           ),

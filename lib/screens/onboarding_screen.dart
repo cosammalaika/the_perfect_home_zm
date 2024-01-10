@@ -22,9 +22,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   int _currentPage = 0;
   List colors = const [
-    Color(0xffDAD3C8),
-    Color(0xffFFE5DE),
-    Color(0xffDCF6E6),
+    Color(0xffffffff),
+    Color(0xffffffff),
+    Color(0xffffffff),
   ];
 
   AnimatedContainer _buildDots({
@@ -32,11 +32,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         borderRadius: BorderRadius.all(
           Radius.circular(50),
         ),
-        color: Color(0xFF000000),
+        color: Color(0xFF4d4d4d),
       ),
       margin: const EdgeInsets.only(right: 5),
       height: 10,
@@ -56,6 +56,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            SizedBox(
+              height: 70,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25.0),
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      height: 50,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Expanded(
               flex: 3,
               child: PageView.builder(
@@ -73,7 +87,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           height: SizeConfig.blockV! * 35,
                         ),
                         SizedBox(
-                          height: (height >= 840) ? 60 : 30,
+                          height: (height >= 840) ? 40 : 20,
                         ),
                         Text(
                           contents[i].title,
@@ -84,13 +98,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fontSize: (width <= 550) ? 30 : 35,
                           ),
                         ),
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 10),
                         Text(
                           contents[i].desc,
                           style: TextStyle(
                             fontFamily: "Poppins",
                             fontWeight: FontWeight.w300,
-                            fontSize: (width <= 550) ? 17 : 25,
+                            fontSize: (width <= 550) ? 12 : 20,
                           ),
                           textAlign: TextAlign.center,
                         )
