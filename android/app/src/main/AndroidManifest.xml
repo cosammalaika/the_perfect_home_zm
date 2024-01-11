@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="the_perfect_home_zm"
+        android:label="The Perfect Home Zm"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
