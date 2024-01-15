@@ -1,107 +1,128 @@
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
-
+import 'package:the_perfect_home_zm/widgets/favorite_box.dart';
 import 'custom_image.dart';
-import 'icon_box.dart';
 
 class PropertyItem extends StatelessWidget {
-  const PropertyItem({Key? key, required this.data}) : super(key: key);
-
+  const PropertyItem(
+      {Key? key,
+      required this.data,
+      this.onTap,
+      this.onFavoriteTap,
+      this.index = 0})
+      : super(key: key);
   final data;
+  final int index;
+  final GestureTapCallback? onTap;
+  final GestureTapCallback? onFavoriteTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 240,
-      margin: const EdgeInsets.fromLTRB(0, 0, 0, 5),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(25),
-        boxShadow: [
-          BoxShadow(
-            color: AppColor.shadowColor.withOpacity(0.1),
-            spreadRadius: .5,
-            blurRadius: 1,
-            offset: const Offset(0, 1), // changes position of shadow
-          ),
-        ],
-      ),
-      child: Stack(
-        children: [
-          CustomImage(
-            data["image"],
-            width: double.infinity,
-            height: 150,
-            radius: 25,
-          ),
-          Positioned(
-            right: 20,
-            top: 130,
-            child: _buildFavorite(),
-          ),
-          Positioned(
-            left: 15,
-            top: 160,
-            child: _buildInfo(),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildFavorite() {
-    return IconBox(
-      bgColor: AppColor.red,
-      child: Icon(
-        data["is_favorited"] ? Icons.favorite : Icons.favorite_border,
-        color: Colors.white,
-        size: 20,
-      ),
-    );
-  }
-
-  Widget _buildInfo() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          data["name"],
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-        ),
-        const SizedBox(
-          height: 2,
-        ),
-        Row(
-          children: [
-            const Icon(
-              Icons.place_outlined,
-              color: AppColor.darker,
-              size: 13,
+    return GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: index % 2 == 0
+              ? const EdgeInsets.only(left: 10)
+              : const EdgeInsets.only(right: 10),
+          child: Container(
+            child: Row(
+              children: [
+                if (index % 2 == 0)
+                  Hero(
+                    tag: data["id"],
+                    child: CustomImage(
+                      data["image"],
+                      width: 150,
+                      height: 120,
+                      radius: 15,
+                    ),
+                  ),
+                Expanded(
+                  child: Container(
+                    height: 90,
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    decoration: BoxDecoration(
+                      color: cardColor,
+                      boxShadow: [
+                        BoxShadow(
+                          color: shadowColor.withOpacity(0.08),
+                          spreadRadius: .5,
+                          blurRadius: .5,
+                          offset: const Offset(2, 0), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          data["name"],
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.place_outlined,
+                              size: 13,
+                            ),
+                            const SizedBox(
+                              width: 3,
+                            ),
+                            Expanded(
+                                child: Text(
+                              data["location"],
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 12,
+                              ),
+                            )),
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Expanded(
+                                child: Text(data["price"],
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: primary,
+                                    ))),
+                            FavoriteBox(
+                              isFavorited: data["is_favorited"],
+                              size: 15,
+                              onTap: onFavoriteTap,
+                            )
+                            // Icon(data["is_favorited"] ? Icons.favorite : Icons.favorite_border, color: data["is_favorited"] ? Colors.red : Colors.black, size: 22,)
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                if (index % 2 != 0)
+                  Hero(
+                    tag: data["id"],
+                    child: CustomImage(
+                      data["image"],
+                      width: 150,
+                      height: 120,
+                      radius: 15,
+                    ),
+                  ),
+              ],
             ),
-            const SizedBox(
-              width: 2,
-            ),
-            Text(
-              data["location"],
-              style: const TextStyle(fontSize: 13, color: AppColor.darker),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 2,
-        ),
-        Text(
-          data["price"],
-          style: const TextStyle(
-            fontSize: 13,
-            color: AppColor.primary,
-            fontWeight: FontWeight.w500,
           ),
-        ),
-      ],
-    );
+        ));
   }
 }

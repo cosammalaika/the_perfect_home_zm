@@ -4,100 +4,88 @@ import 'package:the_perfect_home_zm/theme/color.dart';
 import 'custom_image.dart';
 
 class RecommendItem extends StatelessWidget {
-  const RecommendItem({Key? key, required this.data}) : super(key: key);
+  RecommendItem({Key? key, required this.data}) : super(key: key);
   final data;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 220,
-      height: 130,
-      margin: const EdgeInsets.only(right: 15),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: AppColor.shadowColor.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 1,
-            offset: const Offset(0, 1), // changes position of shadow
-          ),
-        ],
-      ),
-      child: Stack(
-        children: [
-          CustomImage(
-            data["image"],
-            radius: 20,
-            width: double.infinity,
-            height: double.infinity,
-          ),
-          _buildOverlay(),
-          Positioned(
-            bottom: 12,
-            left: 10,
-            child: _buildInfo(),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildOverlay() {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
-          colors: [
-            Colors.black.withOpacity(.8),
-            Colors.white.withOpacity(.01),
+        width: 220,
+        height: 130,
+        margin: EdgeInsets.only(right: 15),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: shadowColor.withOpacity(0.1),
+              spreadRadius: 1,
+              blurRadius: 1,
+              offset: Offset(0, 1), // changes position of shadow
+            ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildInfo() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          data["name"],
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        Row(
+        child: Stack(
           children: [
-            const Icon(
-              Icons.place_outlined,
-              color: Colors.white,
-              size: 13,
+            CustomImage(
+              data["image"],
+              radius: 20,
+              width: double.infinity,
+              height: double.infinity,
             ),
-            const SizedBox(
-              width: 3,
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [
+                        Colors.black.withOpacity(.8),
+                        Colors.white.withOpacity(.01),
+                      ])),
             ),
-            Text(
-              data["location"],
-              style: const TextStyle(
-                fontSize: 13,
-                color: Colors.white,
+            Positioned(
+              bottom: 12,
+              left: 10,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    data["name"],
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.place_outlined,
+                        color: Colors.white,
+                        size: 13,
+                      ),
+                      SizedBox(
+                        width: 3,
+                      ),
+                      Text(
+                        data["location"],
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
-        ),
-      ],
-    );
+        ));
   }
 }

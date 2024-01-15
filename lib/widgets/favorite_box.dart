@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 
-class IconBox extends StatelessWidget {
-  IconBox(
+class FavoriteBox extends StatelessWidget {
+  FavoriteBox(
       {Key? key,
-      required this.child,
-      this.bgColor,
+      this.bgColor = red,
       this.onTap,
+      this.isFavorited = false,
       this.borderColor = Colors.transparent,
-      this.radius = 50})
+      this.radius = 50,
+      this.size = 20})
       : super(key: key);
-  final Widget child;
   final Color borderColor;
   final Color? bgColor;
+  final bool isFavorited;
   final double radius;
+  final double size;
   final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.fastOutSlowIn,
         padding: EdgeInsets.all(5),
         decoration: BoxDecoration(
-          color: bgColor,
+          color: isFavorited ? bgColor : primary,
           borderRadius: BorderRadius.circular(radius),
           border: Border.all(color: borderColor),
           boxShadow: [
@@ -35,7 +39,11 @@ class IconBox extends StatelessWidget {
             ),
           ],
         ),
-        child: child,
+        child: Icon(
+          isFavorited ? Icons.favorite : Icons.favorite_border,
+          color: Colors.white,
+          size: size,
+        ),
       ),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:the_perfect_home_zm/pages/root.dart';
+import 'package:the_perfect_home_zm/screens/root.dart';
 import 'package:the_perfect_home_zm/screens/auth/welcome.dart';
 import 'package:the_perfect_home_zm/screens/onboarding/onboarding_contents.dart';
 import 'package:the_perfect_home_zm/screens/onboarding/size_config.dart';
