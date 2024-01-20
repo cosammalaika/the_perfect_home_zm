@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 import 'package:the_perfect_home_zm/utils/data.dart';
@@ -29,10 +31,10 @@ class _ChatPageState extends State<ChatPage> {
 
   getHeader() {
     return Container(
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
+          Text(
             "Chats",
             style: TextStyle(
                 color: Colors.black87,
@@ -40,7 +42,7 @@ class _ChatPageState extends State<ChatPage> {
                 fontWeight: FontWeight.bold),
           ),
           IconBox(
-              child: const Icon(
+              child: Icon(
                 Icons.search,
                 color: darker,
               ),

@@ -53,22 +53,22 @@ class _PropertyPageState extends State<PropertyPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
+          const Padding(
+            padding: EdgeInsets.only(left: 15, right: 15),
             child: Row(
               children: [
                 Expanded(
                     child: CustomTextBox(
                   hint: "Search",
-                  prefix: const Icon(Icons.search, color: Colors.grey),
+                  prefix: Icon(Icons.search, color: Colors.grey),
                 )),
-                const SizedBox(
+                SizedBox(
                   width: 10,
                 ),
                 IconBox(
                   bgColor: secondary,
                   radius: 10,
-                  child: const Icon(Icons.filter_list_rounded,
+                  child: Icon(Icons.filter_list_rounded,
                       color: Colors.white),
                 )
               ],

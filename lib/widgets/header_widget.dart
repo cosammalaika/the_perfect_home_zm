@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class HeaderWidget extends StatelessWidget {
   final double paddingFactor;
 
-  const HeaderWidget(this.paddingFactor);
+  const HeaderWidget(this.paddingFactor, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "151555392034",
+    "project_id": "the-perfect-home-zm",
+    "storage_bucket": "the-perfect-home-zm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151555392034:android:08440a9d607f2fb671007b",
+        "android_client_info": {
+          "package_name": "com.example.the_perfect_home_zm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy3cLflmPC7SVyJXn2_7rwiVZQmuXLiJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

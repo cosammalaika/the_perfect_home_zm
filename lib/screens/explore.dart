@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 import 'package:the_perfect_home_zm/utils/data.dart';
-import 'package:the_perfect_home_zm/widgets/broker_item.dart';
+import 'package:the_perfect_home_zm/widgets/agent_item.dart';
 import 'package:the_perfect_home_zm/widgets/company_item.dart';
 import 'package:the_perfect_home_zm/widgets/custom_textbox.dart';
 import 'package:the_perfect_home_zm/widgets/icon_box.dart';
@@ -32,7 +32,7 @@ class _ExplorePageState extends State<ExplorePage> {
   }
 
   getHeader() {
-    return Row(
+    return const Row(
       children: [
         Expanded(
             child: CustomTextBox(
@@ -43,9 +43,9 @@ class _ExplorePageState extends State<ExplorePage> {
           width: 10,
         ),
         IconBox(
-          child: Icon(Icons.filter_list_rounded, color: Colors.white),
           bgColor: secondary,
           radius: 10,
+          child: Icon(Icons.filter_list_rounded, color: Colors.white),
         )
       ],
     );
@@ -54,39 +54,39 @@ class _ExplorePageState extends State<ExplorePage> {
   getBody() {
     return SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      SizedBox(
+      const SizedBox(
         height: 20,
       ),
       Container(
-        margin: EdgeInsets.only(left: 15, right: 15),
-        child: Text(
+        margin: const EdgeInsets.only(left: 15, right: 15),
+        child: const Text(
           "Matched Properties",
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 20,
       ),
       listRecommended(),
-      SizedBox(
+      const SizedBox(
         height: 20,
       ),
       Container(
-        margin: EdgeInsets.only(left: 15, right: 15),
-        child: Text(
+        margin: const EdgeInsets.only(left: 15, right: 15),
+        child: const Text(
           "Companies",
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 20,
       ),
       listCompanies(),
-      SizedBox(
+      const SizedBox(
         height: 20,
       ),
-      listBrokers(),
-      SizedBox(
+      listAgents(),
+      const SizedBox(
         height: 100,
       ),
     ]));
@@ -98,7 +98,7 @@ class _ExplorePageState extends State<ExplorePage> {
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.only(bottom: 5, left: 15),
+      padding: const EdgeInsets.only(bottom: 5, left: 15),
       child: Row(children: lists),
     );
   }
@@ -120,17 +120,17 @@ class _ExplorePageState extends State<ExplorePage> {
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.only(bottom: 5, left: 15),
+      padding: const EdgeInsets.only(bottom: 5, left: 15),
       child: Row(children: lists),
     );
   }
 
-  listBrokers() {
-    List<Widget> lists = List.generate(
-        brokers.length, (index) => BrokerItem(data: brokers[index]));
+  listAgents() {
+    List<Widget> lists =
+        List.generate(agents.length, (index) => AgentItem(data: agents[index]));
 
     return Container(
-      margin: EdgeInsets.only(right: 15, left: 15),
+      margin: const EdgeInsets.only(right: 15, left: 15),
       child: Column(children: lists),
     );
   }

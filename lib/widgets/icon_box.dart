@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 
 class IconBox extends StatelessWidget {
-  IconBox(
+  const IconBox(
       {Key? key,
       required this.child,
       this.bgColor,
@@ -21,7 +21,7 @@ class IconBox extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: bgColor,
           borderRadius: BorderRadius.circular(radius),
@@ -31,7 +31,7 @@ class IconBox extends StatelessWidget {
               color: shadowColor.withOpacity(0.1),
               spreadRadius: 1,
               blurRadius: 1,
-              offset: Offset(0, 1), // changes position of shadow
+              offset: const Offset(0, 1), // changes position of shadow
             ),
           ],
         ),

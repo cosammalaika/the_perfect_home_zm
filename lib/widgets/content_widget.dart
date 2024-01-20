@@ -7,7 +7,7 @@ class ContentWidget extends StatelessWidget {
   final String title;
   final String description;
 
-  const ContentWidget(this.paddingFactor, this.title, this.description);
+  const ContentWidget(this.paddingFactor, this.title, this.description, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,7 @@ class ImageSectionWidget extends StatelessWidget {
   final double paddingFactor;
   final String imagePath;
 
-  const ImageSectionWidget(this.paddingFactor, this.imagePath);
+  const ImageSectionWidget(this.paddingFactor, this.imagePath, {super.key});
 
   @override
   Widget build(BuildContext context) {

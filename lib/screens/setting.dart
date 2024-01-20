@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:the_perfect_home_zm/screens/auth/auth_page.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 import 'package:the_perfect_home_zm/utils/data.dart';
 import 'package:the_perfect_home_zm/widgets/custom_image.dart';
@@ -12,6 +14,15 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  final user = FirebaseAuth.instance.currentUser!;
+
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => const AuthPage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -221,7 +232,9 @@ class _SettingPageState extends State<SettingPage> {
                 leadingIcon: Icons.logout_outlined,
                 bgIconColor: Colors.grey.withOpacity(.2),
                 leadingIconColor: Colors.red,
-                onTap: () {},
+                onTap: () {
+                  signUserOut();
+                },
               ),
             ]),
           ),
