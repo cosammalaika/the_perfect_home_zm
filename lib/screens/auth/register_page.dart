@@ -168,7 +168,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     //google buttom
                     SquareTile(
                       onTap: () => AuthService().signInWithGoogle(),
-                      imagePath: 'assets/icons/google.png',
+                      imagePath: 'assets/icons/google.svg',
                       height: 60,
                     ),
 
@@ -176,8 +176,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     // apple buttom
                     SquareTile(
                       onTap: () {},
-                      imagePath: 'assets/icons/apple.png',
-                      height: 70,
+                      imagePath: 'assets/icons/apple.svg',
+                      height: 60,
                     ),
                   ],
                 ),

@@ -181,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                     //google buttom
                     SquareTile(
                       onTap: () => AuthService().signInWithGoogle(),
-                      imagePath: 'assets/icons/google.png',
+                      imagePath: 'assets/icons/google.svg',
                       height: 60,
                     ),
 
@@ -189,7 +189,7 @@ class _LoginPageState extends State<LoginPage> {
                     // apple buttom
                     SquareTile(
                       onTap: () {},
-                      imagePath: 'assets/icons/apple.png',
+                      imagePath: 'assets/icons/apple.svg',
                       height: 60,
                     ),
                   ],
