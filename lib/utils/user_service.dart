@@ -1,28 +1,33 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-Future<String> fetchUserName() async {
-  try {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      final String userId = user.uid;
-      final DocumentSnapshot userDoc = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userId)
-          .get();
+class UserProvider {
+  static Future<String> fetchUserName() async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
 
-      if (userDoc.exists) {
-        final String firstName = userDoc.get('firstName') ?? '';
-        final String lastName = userDoc.get('lastName') ?? '';
-        return '$firstName $lastName';
+      if (user != null) {
+        DocumentSnapshot<Map<String, dynamic>> snapshot =
+            await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+
+        // Check if the user document exists
+        if (snapshot.exists) {
+          String firstName = snapshot.data()!['firstName'];
+          String lastName = snapshot.data()!['lastName'];
+          return '$firstName $lastName';
+        } else {
+          print("User document does not exist for UID: ${user.uid}");
+          return "User document does not exist";
+        }
       } else {
-        return '';
+        print("User not authenticated");
+        return "User not authenticated";
       }
-    } else {
-      throw Exception("User not authenticated");
+    } catch (e) {
+      print("Error fetching user details: $e");
+      return "Error fetching user details";
     }
-  } catch (e) {
-    print('Error fetching user name: $e');
-    return ''; // Return empty string in case of error
   }
+
+  static String userName = ''; // Initialize userName
 }

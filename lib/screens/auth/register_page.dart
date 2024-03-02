@@ -25,35 +25,39 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void signUserUp() async {
     try {
-      // check if both password and confirm pasword is same
+      // check if both password and confirm password are the same
       if (passwordController.text == confirmPasswordController.text) {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        UserCredential userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
-        //add user details
-        addUserdetails(
-            firstnameController.text.trim(),
-            lastnameController.text.trim(),
-            int.parse(phoneController.text.trim()),
-            emailController.text.trim());
+
+        // add user details
+        await addUserdetails(
+          userCredential.user!.uid,
+          firstnameController.text.trim(),
+          lastnameController.text.trim(),
+          int.parse(phoneController.text.trim()),
+          emailController.text.trim(),
+        );
       } else {
-        genericErrorMessage("Password don't match!");
+        genericErrorMessage("Passwords don't match!");
       }
-
-      //pop the loading circle
-      Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
-      //pop the loading circle
-      Navigator.pop(context);
-
-      genericErrorMessage("user already exsits");
+      genericErrorMessage("User already exists");
     }
   }
 
-  Future addUserdetails(
-      String firstName, String lastName, int phoneNumber, String email) async {
-    await FirebaseFirestore.instance.collection('users').add({
+  Future<void> addUserdetails(
+    String uid, // Pass UID as argument
+    String firstName,
+    String lastName,
+    int phoneNumber,
+    String email,
+  ) async {
+    await FirebaseFirestore.instance.collection('users').doc(uid).set({
+      'uid': uid,
       'firstName': firstName,
       'lastName': lastName,
       'phoneNumber': phoneNumber,
@@ -116,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 //username
                 MyTextField(
                   controller: firstnameController,
-                  hintText: 'first name',
+                  hintText: 'First Name',
                   obscureText: false,
                 ),
                 const SizedBox(height: 10),
@@ -124,7 +128,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 //username
                 MyTextField(
                   controller: lastnameController,
-                  hintText: 'last name',
+                  hintText: 'Last Name',
                   obscureText: false,
                 ),
                 const SizedBox(height: 10),
@@ -132,7 +136,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 //username
                 MyTextField(
                   controller: phoneController,
-                  hintText: 'phone number',
+                  hintText: 'Phone Number',
                   obscureText: false,
                 ),
                 const SizedBox(height: 10),
@@ -140,7 +144,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 //username
                 MyTextField(
                   controller: emailController,
-                  hintText: 'email',
+                  hintText: 'Email',
                   obscureText: false,
                 ),
 

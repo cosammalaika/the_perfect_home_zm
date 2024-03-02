@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
@@ -19,4 +20,8 @@ class AuthService {
     //sign in!
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
+  static void genericErrorMessage(BuildContext context, message) {}
+
+  static void signUserUp({required String email, required String password, required String firstName, required String lastName, required int phoneNumber, required Null Function(dynamic message) onError, required Null Function() onSuccess}) {}
 }

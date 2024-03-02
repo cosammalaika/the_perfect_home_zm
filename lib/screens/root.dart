@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:the_perfect_home_zm/screens/auth/home_page.dart';
 import 'package:the_perfect_home_zm/screens/chat.dart';
 import 'package:the_perfect_home_zm/screens/explore.dart';
+import 'package:the_perfect_home_zm/screens/home.dart';
 import 'package:the_perfect_home_zm/screens/property.dart';
 import 'package:the_perfect_home_zm/screens/setting.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 import 'package:the_perfect_home_zm/utils/constant.dart';
 import 'package:the_perfect_home_zm/widgets/bottombar_item.dart';
-
-import 'home.dart';
 
 class RootApp extends StatefulWidget {
   const RootApp({Key? key}) : super(key: key);
@@ -18,11 +18,11 @@ class RootApp extends StatefulWidget {
 
 class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
   int activeTab = 0;
-  List barItems = [
+  List<Map<String, dynamic>> barItems = [
     {
       "icon": Icons.home_outlined,
       "active_icon": Icons.home_rounded,
-      "page": const HomePage(),
+      "page": HomePage(),
       "title": ""
     },
     {
@@ -50,7 +50,7 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
       "title": ""
     },
   ];
-//====== set animation=====
+  //====== set animation=====
   late final AnimationController _controller = AnimationController(
     duration: const Duration(milliseconds: ANIMATED_BODY_MS),
     vsync: this,
@@ -85,7 +85,7 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
     _controller.forward();
   }
 
-//====== end set animation=====
+  //====== end set animation=====
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +103,9 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
     return IndexedStack(
         index: activeTab,
         children: List.generate(
-            barItems.length, (index) => animatedPage(barItems[index]["page"])));
+            barItems.length,
+            (index) => animatedPage(
+                barItems[index]["page"] as Widget))); // Cast page to Widget
   }
 
   Widget getBottomBar() {
@@ -128,8 +130,8 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
               barItems.length,
               (index) => BottomBarItem(
                     activeTab == index
-                        ? barItems[index]["active_icon"]
-                        : barItems[index]["icon"],
+                        ? barItems[index]["active_icon"] as IconData
+                        : barItems[index]["icon"] as IconData,
                     "",
                     isActive: activeTab == index,
                     activeColor: primary,
