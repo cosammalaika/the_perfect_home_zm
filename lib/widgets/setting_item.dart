@@ -42,7 +42,7 @@ class SettingItem extends StatelessWidget {
                   Expanded(
                     child: Text(
                       title,
-                      style: const TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 12),
                     ),
                   ),
                   const Icon(
@@ -55,7 +55,7 @@ class SettingItem extends StatelessWidget {
                   Expanded(
                     child: Text(
                       title,
-                      style: const TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 12),
                     ),
                   ),
                   const Icon(

@@ -12,21 +12,15 @@ class OnboardingContents {
 
 List<OnboardingContents> contents = [
   OnboardingContents(
-    title: 'Find Your Perfect Home in Zambia',
-    image: 'assets/images/image1.png',
-    desc:
-        'Explore the ideal living spaces that match your lifestyle and preferences.',
-  ),
+      title: 'Search for Your Ideal Home',
+      image: 'assets/images/image1.png',
+      desc: 'Explore a variety of homes to find the one that suits you best.'),
   OnboardingContents(
-    title: 'Create Harmony in Your Living Space',
-    image: 'assets/images/image2.png',
-    desc:
-        'Design and organize your perfect home for a harmonious living experience.',
-  ),
+      title: 'Find Your Dream Home',
+      image: 'assets/images/image2.png',
+      desc: 'Locate the ideal property that meets all your needs and desires.'),
   OnboardingContents(
-    title: 'Receive Updates on Dream Properties',
-    image: 'assets/images/image3.png',
-    desc:
-        'Stay informed about the latest listings and updates for your dream home in Zambia.',
-  ),
+      title: 'Move In and Make It Yours',
+      image: 'assets/images/image3.png',
+      desc: 'Take the next step towards your dream home in Zambia.')
 ];

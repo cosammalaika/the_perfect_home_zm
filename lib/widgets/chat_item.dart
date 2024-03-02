@@ -57,7 +57,7 @@ class ChatItem extends StatelessWidget {
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w700)))),
                         const SizedBox(width: 5),
                         Container(

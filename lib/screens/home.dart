@@ -1,12 +1,15 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 import 'package:the_perfect_home_zm/utils/data.dart';
-import 'package:the_perfect_home_zm/widgets/category_item.dart';
+import 'package:the_perfect_home_zm/utils/user_service.dart';
 import 'package:the_perfect_home_zm/widgets/custom_image.dart';
+import 'package:the_perfect_home_zm/widgets/category_item.dart';
 import 'package:the_perfect_home_zm/widgets/popular_item.dart';
 import 'package:the_perfect_home_zm/widgets/recent_item.dart';
 import 'package:the_perfect_home_zm/widgets/recommend_item.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 import 'property_detail.dart';
 
@@ -18,6 +21,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String userName = ''; // Initialize userName
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserName().then((name) {
+      setState(() {
+        userName = name;
+      });
+    }).catchError((error) {
+      print("Error fetching user name: $error");
+      setState(() {
+        userName = "Error"; // Display an error message
+      });
+    });
+  }
+
+  
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -34,7 +56,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  getHeader() {
+  Widget getHeader() {
     return Container(
       child: Column(
         children: [
@@ -42,10 +64,10 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Hello!",
                     style: TextStyle(
                         color: darker,
@@ -53,8 +75,8 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    "Malaika Cosam",
-                    style: TextStyle(
+                    userName.isNotEmpty ? userName! : 'Loading...',
+                    style: const TextStyle(
                         color: Colors.black87,
                         fontSize: 18,
                         fontWeight: FontWeight.w600),

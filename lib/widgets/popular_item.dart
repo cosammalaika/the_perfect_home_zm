@@ -53,8 +53,8 @@ class PopularItem extends StatelessWidget {
                       data["name"],
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style:
-                          const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                      style: const TextStyle(
+                          fontSize: 12, fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(
                       height: 5,

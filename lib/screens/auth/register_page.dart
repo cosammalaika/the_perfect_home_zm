@@ -1,13 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 import 'package:the_perfect_home_zm/widgets/my_buttom.dart';
 import 'package:the_perfect_home_zm/widgets/my_textfield.dart';
-import 'package:the_perfect_home_zm/widgets/square_tile.dart';
-
-import '../../services/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -21,17 +19,11 @@ class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  final firstnameController = TextEditingController();
+  final lastnameController = TextEditingController();
+  final phoneController = TextEditingController();
 
   void signUserUp() async {
-    // show loading circle
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        });
-
     try {
       // check if both password and confirm pasword is same
       if (passwordController.text == confirmPasswordController.text) {
@@ -39,9 +31,13 @@ class _RegisterPageState extends State<RegisterPage> {
           email: emailController.text,
           password: passwordController.text,
         );
-        Navigator.pop(context);
+        //add user details
+        addUserdetails(
+            firstnameController.text.trim(),
+            lastnameController.text.trim(),
+            int.parse(phoneController.text.trim()),
+            emailController.text.trim());
       } else {
-        //show error password dont match
         genericErrorMessage("Password don't match!");
       }
 
@@ -51,8 +47,18 @@ class _RegisterPageState extends State<RegisterPage> {
       //pop the loading circle
       Navigator.pop(context);
 
-      genericErrorMessage(e.code);
+      genericErrorMessage("user already exsits");
     }
+  }
+
+  Future addUserdetails(
+      String firstName, String lastName, int phoneNumber, String email) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'firstName': firstName,
+      'lastName': lastName,
+      'phoneNumber': phoneNumber,
+      'email': email,
+    });
   }
 
   void genericErrorMessage(String message) {
@@ -60,7 +66,13 @@ class _RegisterPageState extends State<RegisterPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(message),
+          title: Text(
+            message,
+            style: const TextStyle(
+              fontSize: 12,
+              color: Color(0xFF4D4D4D),
+            ),
+          ),
           actions: [
             TextButton(
               onPressed: () {
@@ -89,40 +101,64 @@ class _RegisterPageState extends State<RegisterPage> {
                 //logo
                 Image.asset(
                   'assets/images/logo.png',
-                  height: 100,
+                  height: 70,
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 15),
                 const Text(
                   'Let`s create an account for you!',
                   style: TextStyle(
                     color: secondary,
-                    fontSize: 16,
+                    fontSize: 12,
                   ),
                 ),
-                const SizedBox(height: 25),
+                const SizedBox(height: 10),
+
+                //username
+                MyTextField(
+                  controller: firstnameController,
+                  hintText: 'first name',
+                  obscureText: false,
+                ),
+                const SizedBox(height: 10),
+
+                //username
+                MyTextField(
+                  controller: lastnameController,
+                  hintText: 'last name',
+                  obscureText: false,
+                ),
+                const SizedBox(height: 10),
+
+                //username
+                MyTextField(
+                  controller: phoneController,
+                  hintText: 'phone number',
+                  obscureText: false,
+                ),
+                const SizedBox(height: 10),
 
                 //username
                 MyTextField(
                   controller: emailController,
-                  hintText: 'Username or email',
+                  hintText: 'email',
                   obscureText: false,
                 ),
 
-                const SizedBox(height: 15),
+                const SizedBox(height: 10),
                 //password
                 MyTextField(
                   controller: passwordController,
                   hintText: 'Password',
                   obscureText: true,
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 10),
 
                 MyTextField(
                   controller: confirmPasswordController,
                   hintText: 'Confirm Password',
                   obscureText: true,
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 10),
 
                 //sign in button
                 MyButton(
@@ -130,60 +166,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   text: 'Sign Up',
                 ),
                 const SizedBox(height: 20),
-
-                // continue with
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey.shade400,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8, right: 8),
-                        child: Text(
-                          'OR',
-                          style: TextStyle(color: Colors.grey.shade600),
-                        ),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey.shade400,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 25),
-
-                //google + apple button
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    //google buttom
-                    SquareTile(
-                      onTap: () => AuthService().signInWithGoogle(),
-                      imagePath: 'assets/icons/google.svg',
-                      height: 60,
-                    ),
-
-                    const SizedBox(width: 20),
-                    // apple buttom
-                    SquareTile(
-                      onTap: () {},
-                      imagePath: 'assets/icons/apple.svg',
-                      height: 60,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
 
                 // not a memeber ? register now
 

@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:the_perfect_home_zm/screens/auth/forgotPassword.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 import 'package:the_perfect_home_zm/widgets/my_buttom.dart';
 import 'package:the_perfect_home_zm/widgets/my_textfield.dart';
@@ -10,7 +11,7 @@ import 'package:the_perfect_home_zm/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
-  LoginPage({super.key, required this.onTap});
+  LoginPage({Key? key, required this.onTap}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -18,18 +19,18 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
-
   final passwordController = TextEditingController();
 
   void signUserIn() async {
-    // show loading circle
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        });
+    // // show loading circle
+    // showDialog(
+    //   context: context,
+    //   builder: (context) {
+    //     return const Center(
+    //       child: CircularProgressIndicator(),
+    //     );
+    //   },
+    // );
 
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -37,12 +38,40 @@ class _LoginPageState extends State<LoginPage> {
         password: passwordController.text,
       );
       //pop the loading circle
-      Navigator.pop(context);
+      // Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
-      //pop the loading circle
-      Navigator.pop(context);
-
-      genericErrorMessage(e.code);
+      // Handle FirebaseAuthException
+      if (e.code == 'user-not-found') {
+        // Show snackbar or dialog indicating user not found
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('User not found'),
+          ),
+        );
+      } else if (e.code == 'wrong-password') {
+        // Show snackbar or dialog indicating wrong password
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Wrong password'),
+          ),
+        );
+      } else {
+        // Show snackbar or dialog indicating other FirebaseAuthException
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: ${e.message}'),
+          ),
+        );
+      }
+    } catch (e) {
+      // Handle other exceptions
+      print(e.toString());
+      // Show snackbar or dialog indicating other exceptions
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error: ${e.toString()}'),
+        ),
+      );
     }
   }
 
@@ -51,7 +80,13 @@ class _LoginPageState extends State<LoginPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(message),
+          title: Text(
+            message,
+            style: const TextStyle(
+              fontSize: 12,
+              color: Color(0xFF4D4D4D),
+            ),
+          ),
           actions: [
             TextButton(
               onPressed: () {
@@ -108,36 +143,44 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: 'Password',
                   obscureText: true,
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 10),
+
+                //forgot password
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const ForgotPasswordScreen(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          'Forgot Password ?',
+                          style: TextStyle(
+                            color: primary,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 10),
 
                 //sign in button
                 MyButton(
                   onTap: signUserIn,
                   text: 'Sign In',
-                ),
-                const SizedBox(height: 20),
-
-                //forgot passowrd
-
-                const Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Forgot your login details? ',
-                        style: TextStyle(color: secondary),
-                      ),
-                      Text(
-                        'Get help logging in.',
-                        style: TextStyle(
-                          color: primary,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
-                    ],
-                  ),
                 ),
 
                 const SizedBox(
@@ -178,7 +221,7 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    //google buttom
+                    //google button
                     SquareTile(
                       onTap: () => AuthService().signInWithGoogle(),
                       imagePath: 'assets/icons/google.svg',
@@ -186,7 +229,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
 
                     const SizedBox(width: 20),
-                    // apple buttom
+                    // apple button
                     SquareTile(
                       onTap: () {},
                       imagePath: 'assets/icons/apple.svg',
@@ -198,7 +241,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 25,
                 ),
 
-                // not a memeber ? register now
+                // not a member ? register now
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
