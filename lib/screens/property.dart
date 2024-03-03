@@ -39,9 +39,7 @@ class _PropertyPageState extends State<PropertyPage> {
         Text(
           "Properties",
           style: TextStyle(
-              color: Colors.black87,
-              fontSize: 22,
-              fontWeight: FontWeight.bold),
+              color: Colors.black87, fontSize: 18, fontWeight: FontWeight.bold),
         ),
         // IconBox(child: Icon(Icons.search, color: Colors.white,), bgColor: primary.withOpacity(.8),)
       ],
@@ -68,8 +66,7 @@ class _PropertyPageState extends State<PropertyPage> {
                 IconBox(
                   bgColor: secondary,
                   radius: 10,
-                  child: Icon(Icons.filter_list_rounded,
-                      color: Colors.white),
+                  child: Icon(Icons.filter_list_rounded, color: Colors.white),
                 )
               ],
             ),

@@ -65,9 +65,7 @@ class _SettingPageState extends State<SettingPage> {
         Text(
           "Settings",
           style: TextStyle(
-              color: Colors.black87,
-              fontSize: 22,
-              fontWeight: FontWeight.bold),
+              color: Colors.black87, fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ],
     );
@@ -90,14 +88,12 @@ class _SettingPageState extends State<SettingPage> {
               Text(
                 userName.isNotEmpty ? userName : 'Loading...',
                 style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ],
           ),
           const SizedBox(height: 20),
           _buildSettingsContainer(),
-          const SizedBox(height: 20),
-          _buildOthersContainer(),
           const SizedBox(height: 20),
           _buildLogOutContainer(),
         ],
@@ -125,38 +121,17 @@ class _SettingPageState extends State<SettingPage> {
           _buildSettingItem("Profile", Icons.person,
               Colors.orange.withOpacity(.2), Colors.orange),
           _buildDivider(),
-          _buildSettingItem("Notification", Icons.notifications,
-              Colors.blue.withOpacity(.2), Colors.blue),
-          _buildDivider(),
           _buildSettingItem("Change Password", Icons.lock,
               Colors.green.withOpacity(.2), Colors.green),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildOthersContainer() {
-    return Container(
-      padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        color: Theme.of(context).cardColor,
-        boxShadow: [
-          BoxShadow(
-            color: Theme.of(context).shadowColor.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 1,
-            offset: const Offset(0, 1), // changes position of shadow
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          _buildSettingItem(
-              "Appearance", Icons.dark_mode, darker.withOpacity(.2), darker),
           _buildDivider(),
           _buildSettingItem("Favorites", Icons.favorite,
               Colors.red.withOpacity(.2), Colors.red),
+          _buildDivider(),
+          _buildSettingItem("My Listings", Icons.list,
+              Colors.blue.withOpacity(.2), Colors.blue),
+          _buildDivider(),
+          _buildSettingItem(
+              "Appearance", Icons.dark_mode, darker.withOpacity(.2), darker),
           _buildDivider(),
           _buildSettingItem("Privacy Policy", Icons.privacy_tip,
               Colors.grey.withOpacity(.2), Colors.grey),

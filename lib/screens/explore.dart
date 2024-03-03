@@ -63,7 +63,7 @@ class _ExplorePageState extends State<ExplorePage> {
         margin: const EdgeInsets.only(left: 15, right: 15),
         child: const Text(
           "Matched Properties",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
       const SizedBox(
@@ -77,7 +77,7 @@ class _ExplorePageState extends State<ExplorePage> {
         margin: const EdgeInsets.only(left: 15, right: 15),
         child: const Text(
           "Companies",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
       const SizedBox(

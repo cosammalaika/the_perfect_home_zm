@@ -37,7 +37,7 @@ class _ChatPageState extends State<ChatPage> {
           "Chats",
           style: TextStyle(
               color: Colors.black87,
-              fontSize: 22,
+              fontSize: 18,
               fontWeight: FontWeight.bold),
         ),
         IconBox(
