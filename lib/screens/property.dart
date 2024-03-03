@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/screens/property_detail.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
@@ -31,20 +33,18 @@ class _PropertyPageState extends State<PropertyPage> {
   }
 
   getHeader() {
-    return Container(
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "Properties",
-            style: TextStyle(
-                color: Colors.black87,
-                fontSize: 22,
-                fontWeight: FontWeight.bold),
-          ),
-          // IconBox(child: Icon(Icons.search, color: Colors.white,), bgColor: primary.withOpacity(.8),)
-        ],
-      ),
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          "Properties",
+          style: TextStyle(
+              color: Colors.black87,
+              fontSize: 22,
+              fontWeight: FontWeight.bold),
+        ),
+        // IconBox(child: Icon(Icons.search, color: Colors.white,), bgColor: primary.withOpacity(.8),)
+      ],
     );
   }
 

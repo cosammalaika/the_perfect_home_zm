@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/screens/auth/login_page.dart';
 import 'package:the_perfect_home_zm/screens/auth/register_page.dart';

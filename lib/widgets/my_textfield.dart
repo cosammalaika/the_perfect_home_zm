@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 
@@ -28,7 +30,7 @@ class MyTextField extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15.0),
-              borderSide: BorderSide(color: Color(0xFF4d4d4d)),
+              borderSide: const BorderSide(color: Color(0xFF4d4d4d)),
             ),
             filled: true,
             fillColor: Colors.white,

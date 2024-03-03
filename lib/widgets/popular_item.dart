@@ -1,10 +1,12 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 import 'package:the_perfect_home_zm/widgets/favorite_box.dart';
 import 'custom_image.dart';
 
 class PopularItem extends StatelessWidget {
-  PopularItem({Key? key, required this.data, this.onTap}) : super(key: key);
+  const PopularItem({Key? key, required this.data, this.onTap}) : super(key: key);
   final data;
   final GestureTapCallback? onTap;
 

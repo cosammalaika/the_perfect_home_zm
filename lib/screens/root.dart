@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:the_perfect_home_zm/screens/auth/home_page.dart';
 import 'package:the_perfect_home_zm/screens/chat.dart';
 import 'package:the_perfect_home_zm/screens/explore.dart';
 import 'package:the_perfect_home_zm/screens/home.dart';
@@ -13,6 +12,7 @@ class RootApp extends StatefulWidget {
   const RootApp({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _RootAppState createState() => _RootAppState();
 }
 
@@ -22,7 +22,7 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
     {
       "icon": Icons.home_outlined,
       "active_icon": Icons.home_rounded,
-      "page": HomePage(),
+      "page": const HomePage(),
       "title": ""
     },
     {

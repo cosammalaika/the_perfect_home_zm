@@ -3,7 +3,7 @@ import 'package:the_perfect_home_zm/theme/color.dart';
 
 class BottomBarItem extends StatelessWidget {
   const BottomBarItem(this.icon, this.title,
-      {this.onTap,
+      {super.key, this.onTap,
       this.color = inActiveColor,
       this.activeColor = primary,
       this.isActive = false,
@@ -24,7 +24,7 @@ class BottomBarItem extends StatelessWidget {
         alignment: Alignment.center,
         child: Stack(alignment: Alignment.center, children: <Widget>[
           Container(
-              padding: EdgeInsets.all(7),
+              padding: const EdgeInsets.all(7),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 color: isActive ? primary.withOpacity(.1) : Colors.transparent,

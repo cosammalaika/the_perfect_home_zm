@@ -43,7 +43,7 @@ class CustomButton extends StatelessWidget {
                   color: shadowColor.withOpacity(0.1),
                   spreadRadius: 1,
                   blurRadius: 1,
-                  offset: Offset(0, 1), // changes position of shadow
+                  offset: const Offset(0, 1), // changes position of shadow
                 ),
               ],
             ),
@@ -82,7 +82,7 @@ class CustomButton extends StatelessWidget {
                                   ? textColor.withOpacity(0.3)
                                   : textColor,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
                             Text(

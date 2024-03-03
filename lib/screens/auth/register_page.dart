@@ -44,7 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
       } else {
         genericErrorMessage("Passwords don't match!");
       }
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       genericErrorMessage("User already exists");
     }
   }

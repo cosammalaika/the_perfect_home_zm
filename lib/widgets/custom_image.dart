@@ -3,7 +3,7 @@ import 'package:the_perfect_home_zm/theme/color.dart';
 
 class CustomImage extends StatelessWidget {
   const CustomImage(this.name,
-      {this.width = 100,
+      {super.key, this.width = 100,
       this.height = 100,
       this.bgColor,
       this.borderWidth = 0,

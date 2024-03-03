@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/screens/auth/auth_page.dart';
@@ -27,7 +29,6 @@ class _SettingPageState extends State<SettingPage> {
         userName = name;
       });
     }).catchError((error) {
-      print("Error fetching user name: $error");
       setState(() {
         userName = "Error"; // Display an error message
       });
@@ -58,19 +59,17 @@ class _SettingPageState extends State<SettingPage> {
   }
 
   Widget _getHeader() {
-    return Container(
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "Settings",
-            style: TextStyle(
-                color: Colors.black87,
-                fontSize: 22,
-                fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          "Settings",
+          style: TextStyle(
+              color: Colors.black87,
+              fontSize: 22,
+              fontWeight: FontWeight.bold),
+        ),
+      ],
     );
   }
 

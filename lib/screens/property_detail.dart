@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, sort_child_properties_last
+// ignore_for_file: library_private_types_in_public_api, sort_child_properties_last, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
@@ -11,7 +11,7 @@ import 'package:the_perfect_home_zm/widgets/favorite_box.dart';
 import 'package:the_perfect_home_zm/widgets/icon_box.dart';
 
 class PropertyDetail extends StatefulWidget {
-  PropertyDetail({Key? key, required this.data}) : super(key: key);
+  const PropertyDetail({Key? key, required this.data}) : super(key: key);
   final data;
   @override
   _PropertyDetailState createState() => _PropertyDetailState();
@@ -50,7 +50,7 @@ class _PropertyDetailState extends State<PropertyDetail> {
   }
 
   getStack() {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: 370,
       child: Stack(

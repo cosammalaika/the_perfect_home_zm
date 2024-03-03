@@ -25,7 +25,7 @@ class ImageSectionWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(height: 16 * paddingFactor),
-          Container(
+          SizedBox(
             width: double.infinity,
             height: 54 * paddingFactor,
             child: ClipRRect(

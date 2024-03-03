@@ -1,9 +1,7 @@
-// ignore_for_file: use_build_context_synchronously
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_perfect_home_zm/screens/auth/forgotPassword.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
+import 'package:the_perfect_home_zm/utils/user_service.dart';
 import 'package:the_perfect_home_zm/widgets/my_buttom.dart';
 import 'package:the_perfect_home_zm/widgets/my_textfield.dart';
 import 'package:the_perfect_home_zm/widgets/square_tile.dart';
@@ -11,7 +9,7 @@ import 'package:the_perfect_home_zm/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
-  LoginPage({Key? key, required this.onTap}) : super(key: key);
+  const LoginPage({Key? key, required this.onTap}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -20,85 +18,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
-  void signUserIn() async {
-    // // show loading circle
-    // showDialog(
-    //   context: context,
-    //   builder: (context) {
-    //     return const Center(
-    //       child: CircularProgressIndicator(),
-    //     );
-    //   },
-    // );
-
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
-      //pop the loading circle
-      // Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      // Handle FirebaseAuthException
-      if (e.code == 'user-not-found') {
-        // Show snackbar or dialog indicating user not found
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('User not found'),
-          ),
-        );
-      } else if (e.code == 'wrong-password') {
-        // Show snackbar or dialog indicating wrong password
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Wrong password'),
-          ),
-        );
-      } else {
-        // Show snackbar or dialog indicating other FirebaseAuthException
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error: ${e.message}'),
-          ),
-        );
-      }
-    } catch (e) {
-      // Handle other exceptions
-      print(e.toString());
-      // Show snackbar or dialog indicating other exceptions
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error: ${e.toString()}'),
-        ),
-      );
-    }
-  }
-
-  void genericErrorMessage(String message) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(
-            message,
-            style: const TextStyle(
-              fontSize: 12,
-              color: Color(0xFF4D4D4D),
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -179,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
 
                 //sign in button
                 MyButton(
-                  onTap: signUserIn,
+                  onTap: () => signUserIn(context, emailController, passwordController),
                   text: 'Sign In',
                 ),
 
