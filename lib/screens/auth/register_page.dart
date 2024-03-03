@@ -116,8 +116,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 const SizedBox(height: 10),
-
-                //username
                 MyTextField(
                   controller: firstnameController,
                   hintText: 'First Name',

@@ -1,12 +1,14 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'dart:ffi';
+import 'dart:typed_data';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:the_perfect_home_zm/screens/auth/auth_page.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
-import 'package:the_perfect_home_zm/utils/data.dart';
 import 'package:the_perfect_home_zm/utils/user_service.dart';
-import 'package:the_perfect_home_zm/widgets/custom_image.dart';
 import 'package:the_perfect_home_zm/widgets/setting_item.dart';
 
 class SettingPage extends StatefulWidget {
@@ -19,6 +21,13 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   late User user;
   String userName = UserProvider.userName; // Use userName from UserProvider
+  Uint8List? _image;
+  void selectImage() async {
+    Uint8List img = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = img;
+    });
+  }
 
   @override
   void initState() {
@@ -78,12 +87,22 @@ class _SettingPageState extends State<SettingPage> {
         children: [
           Column(
             children: [
-              CustomImage(
-                profile,
-                width: 70,
-                height: 70,
-                radius: 15,
-              ),
+              if (_image != null)
+                CircleAvatar(
+                  radius: 50,
+                  backgroundImage: MemoryImage(_image!),
+                )
+              else
+                GestureDetector(
+                  onTap: () {
+                    selectImage();
+                  },
+                  child: const CircleAvatar(
+                    radius: 50,
+                    backgroundImage: NetworkImage(
+                        'https://i.pinimg.com/originals/ff/a0/9a/ffa09aec412db3f54deadf1b3781de2a.png'),
+                  ),
+                ),
               const SizedBox(height: 10),
               Text(
                 userName.isNotEmpty ? userName : 'Loading...',

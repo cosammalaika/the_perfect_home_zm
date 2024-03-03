@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserProvider {
   static Future<String> fetchUserName() async {
@@ -11,7 +12,10 @@ class UserProvider {
 
       if (user != null) {
         DocumentSnapshot<Map<String, dynamic>> snapshot =
-            await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+            await FirebaseFirestore.instance
+                .collection('users')
+                .doc(user.uid)
+                .get();
 
         // Check if the user document exists
         if (snapshot.exists) {
@@ -30,9 +34,10 @@ class UserProvider {
   }
 
   static String userName = ''; // Initialize userName
-  
 }
-void signUserIn(BuildContext context, TextEditingController emailController, TextEditingController passwordController) async {
+
+void signUserIn(BuildContext context, TextEditingController emailController,
+    TextEditingController passwordController) async {
   try {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: emailController.text,
@@ -98,4 +103,13 @@ void genericErrorMessage(BuildContext context, String message) {
       );
     },
   );
+}
+
+pickImage(ImageSource source) async {
+  final ImagePicker _imagePicker = ImagePicker();
+  XFile? _file = await _imagePicker.pickImage(source: source);
+  if (_file != null) {
+    return await _file.readAsBytes();
+  }
+  print('no image picked');
 }
