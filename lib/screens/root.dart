@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:the_perfect_home_zm/screens/chat.dart';
-import 'package:the_perfect_home_zm/screens/explore.dart';
-import 'package:the_perfect_home_zm/screens/home.dart';
-import 'package:the_perfect_home_zm/screens/property.dart';
-import 'package:the_perfect_home_zm/screens/setting.dart';
+import 'package:the_perfect_home_zm/screens/app/chat.dart';
+import 'package:the_perfect_home_zm/screens/app/explore.dart';
+import 'package:the_perfect_home_zm/screens/app/home.dart';
+import 'package:the_perfect_home_zm/screens/app/property.dart';
+import 'package:the_perfect_home_zm/screens/app/setting.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 import 'package:the_perfect_home_zm/utils/constant.dart';
 import 'package:the_perfect_home_zm/widgets/bottombar_item.dart';

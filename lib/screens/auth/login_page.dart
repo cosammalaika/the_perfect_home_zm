@@ -5,7 +5,7 @@ import 'package:the_perfect_home_zm/utils/user_service.dart';
 import 'package:the_perfect_home_zm/widgets/my_buttom.dart';
 import 'package:the_perfect_home_zm/widgets/my_textfield.dart';
 import 'package:the_perfect_home_zm/widgets/square_tile.dart';
-import 'package:the_perfect_home_zm/services/auth_service.dart';
+import 'package:the_perfect_home_zm/utils/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:the_perfect_home_zm/pages/screens/onboarding_screen.dart';
+import 'package:the_perfect_home_zm/screens/onboarding/onboarding_screen.dart';
 
 import 'login_or_registerPage.dart';
 

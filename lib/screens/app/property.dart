@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:the_perfect_home_zm/screens/property_detail.dart';
+import 'package:the_perfect_home_zm/screens/app/property_detail.dart';
 import 'package:the_perfect_home_zm/theme/color.dart';
 import 'package:the_perfect_home_zm/utils/data.dart';
 import 'package:the_perfect_home_zm/widgets/category_item.dart';

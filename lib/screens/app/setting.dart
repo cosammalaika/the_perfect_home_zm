@@ -137,7 +137,7 @@ class _SettingPageState extends State<SettingPage> {
       ),
       child: Column(
         children: [
-          _buildSettingItem("Profile", Icons.person,
+          _buildSettingItem("Edit Profile", Icons.person,
               Colors.orange.withOpacity(.2), Colors.orange),
           _buildDivider(),
           _buildSettingItem("Change Password", Icons.lock,
@@ -148,9 +148,6 @@ class _SettingPageState extends State<SettingPage> {
           _buildDivider(),
           _buildSettingItem("My Listings", Icons.list,
               Colors.blue.withOpacity(.2), Colors.blue),
-          _buildDivider(),
-          _buildSettingItem(
-              "Appearance", Icons.dark_mode, darker.withOpacity(.2), darker),
           _buildDivider(),
           _buildSettingItem("Privacy Policy", Icons.privacy_tip,
               Colors.grey.withOpacity(.2), Colors.grey),
